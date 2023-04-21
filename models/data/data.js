@@ -1,5 +1,5 @@
 import 'dotenv/config.js'
-import '../../config/database.js'
+import mongoose from 'mongoose'
 import { users } from './users.js'
 import { authors } from './authors.js'
 import { companies } from './companies.js'
@@ -11,6 +11,11 @@ import { Company } from '../Company.js'
 import { Category } from '../Category.js'
 import { Manga } from '../Manga.js'
 import { Chapter } from '../Chapter.js'
+
+mongoose.set('strictQuery', false)
+mongoose.connect(process.env.MONGO)
+    .then(() => console.log('database connected'))
+    .catch(err => console.log(err))
 
 let newCategories = async(categories) => await Category.insertMany(categories)
 
@@ -40,6 +45,7 @@ let newMangas = async(mangas) => {
         let newManga = await Manga.create(manga)
         for (let chapter of manga.chapters) {
             chapter.manga_id = newManga._id
+            chapter.cover_photo = chapter.pages[0]
             await Chapter.create(chapter)
         }
     }
