@@ -4,7 +4,7 @@ let schema = new mongoose.Schema({
   name: {type: String, required: true},
   logo: {type: String, required: true},
   website: {type: String, required: true},
-  descripction: {type: String, required: true},
+  description: {type: String, required: true},
   active: {type: Boolean, required: true},
   user_id:{
     type: mongoose.Types.ObjectId,
@@ -16,5 +16,5 @@ let schema = new mongoose.Schema({
 })
 let collection = 'companies'
 
-let Company = mongoose.model(schema, collection)
+let Company = mongoose.model(collection, schema)
 export default Company
