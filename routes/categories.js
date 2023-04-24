@@ -1,9 +1,7 @@
 import { Router } from "express";
+import read from '../controllers/categories/read.js'
 let router = Router();
 
-router.get('/', (req, res, next) => res.status(200).render('index', {
-  title: '/CATEGORIES',
-  subtitle: 'endpoints of categories' 
-}))
+router.get('/', read)
 
 export default router;
