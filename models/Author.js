@@ -10,11 +10,11 @@ let schema = new Schema({
   active: {type: Boolean, required: true},
   user_id: {
     type: Types.ObjectId, //tipo de datos de mongoose para referenciar datos de una coleccion con datos de otra coleccion, este caso la coleccion de autores con la coleccion de usuarios.
-    ref: 'users', //nombre de la coleccion con la cual se quiere referenciar el modelo
+    ref: 'users', //el ref nos permite hacer referencia a otro modelo con el fin de crear relaciones con otros modelos
     required: true
   } 
 },{
-  timestamps: true
+  timestamps: true //nos permite crear dos propiedades de tipo date, una va a ser la fecha de creacion y la otra la fecha de ultima actualizacion.
 })
 
 let collection = 'authors'
