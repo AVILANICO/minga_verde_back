@@ -13,6 +13,7 @@ const router = express.Router();
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'MINGA API', subtitle: 'Endpoints of Minga' });
 });
+
 //Las rutas definen como se van a conectar el backend con el frontend
 //indexRouter va a ser el enroutador principal de todos los modelos/recursos.
 router.use('/auth', usersRouter)
