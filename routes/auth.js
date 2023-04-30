@@ -15,3 +15,4 @@ router.get('/', function(req, res, next) {
 router.post('/signup', validator(userCreateSignUp), accountExistsSignUp, create)
 
 export default router;
+

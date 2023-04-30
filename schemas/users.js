@@ -1,7 +1,8 @@
 import joi from "joi"
 
 export const userCreateSignUp = joi.object({
-    mail: joi.string().email({minDomainSegments: 2})
+    name: joi.string(),
+    email: joi.string().email({minDomainSegments: 2})
     .required(),
     password: joi.string()
     .min(8)
