@@ -1,4 +1,5 @@
 import User from "../../models/User.js";
+import jwt from "jsonwebtoken";
 
 let signin = async(req, res, next) => {
   try {
@@ -7,9 +8,23 @@ let signin = async(req, res, next) => {
       {email: req.body.email},
       {is_online: true}
     )
+    const token = jwt.sign(
+      {id: req.user.id},
+      process.env.SECRET,
+      {expiresIn: 60*60*24*7}
+    )
+    
+    const user = {
+      email: req.user.email,
+      photo: req.user.photo,
+      role: req.user.role
+    }
+
     return res.status(200).json({
       success: true,
-      message: '¡User Sign in!'
+      message: '¡User Sign in!',
+      token,
+      user
     })
   } catch (error) {
     next(error)
