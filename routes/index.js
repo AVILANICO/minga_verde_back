@@ -1,6 +1,6 @@
 //ENROUTADOR PRINCIPAL
 import express from 'express'
-import usersRouter from './users.js' 
+import usersRouter from './auth.js' 
 import authorRouter from './authors.js'
 import categoriesRouter from './categories.js'
 import companiesRouter from './companies.js'
