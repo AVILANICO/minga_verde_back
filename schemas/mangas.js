@@ -9,21 +9,22 @@ export const mangaCreate = joi.object({
 
     cover_photo:joi.optional(),
 
-    category_id:joi.optional(),
+    category_id:joi.required(),
 
 
     title:joi.string()
     .required()
     .messages({ 
-        "any.required": "title_required"
+        "string.empty": "title is not allowed to be empty"
 
     }),
 
     description: joi.string()
     .required()
-    .min(20)
+    .min(10)
     .messages({ 
-        "any.required": "description_required"
+        "string.min":"order length must be at least 10 characters long",
+        "string.empty": "description is not allowed to be empty"
 
     }),
 
