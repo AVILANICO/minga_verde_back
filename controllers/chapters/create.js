@@ -2,12 +2,12 @@ import Chapter from '../../models/Chapter.js'
 
     let create = async(req,res,next) => {
         try {
-            let capitulo = await Chapter.create(req.body)
+            let chapter = await Chapter.create(req.body)
             return res
                 .status(201)
                 .json({
                     message: 'create successfully',
-                    capitulo
+                    chapter
                 })
         } catch (error) {
             next (error)
