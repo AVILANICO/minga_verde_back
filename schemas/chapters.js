@@ -6,49 +6,32 @@ const schema = Joi.object({
     manga_id: Joi
         .string()
         .required()
-        .min(4)
-        .message({
-            "string.min":"manga_id length must be at least 4 characters long",
-            "string.empty": "manga_id is not allowed to be empty"
-        }),
+        .min(10),
 
     title: Joi
         .string()
         .required()
         .min(4)
-        .message({
-            "string.min":"title length must be at least 4 characters long",
-            "string.empty": "title is not allowed to be empty"
-        }),
+        .max(50),
 
     cover_photo: Joi
         .string()
         .uri()
         // .required()
-        .min(4)
-        .message({
-            "string.min":"cover_photo length must be at least 4 characters long",
-            "string.empty": "cover_photo is not allowed to be empty"
-        }),
+        .min(4),
 
-    pages: Joi
-        .array()
-        .items(Joi.string())
+    pages: Joi.array()
+        .items(Joi.string().uri())
         .required()
-        .min(4)
-        .message({
-            "string.min":"pages length must be at least 4 characters long",
-            "string.empty": "pages is not allowed to be empty"
-        }),
+        .messages({
+            'string.empty': '"pages" is not allowed to be empty',
+            'string.uri': '"pages" must be a valid uri'
+}),
 
     order: Joi  
         .number() 
         .required()
-        .min(1)
-        .message({
-            "string.min":"order length must be at least 4 characters long",
-            "string.empty": "order is not allowed to be empty"
-        }),
+        .min(1),
 });
 
 export default schema
