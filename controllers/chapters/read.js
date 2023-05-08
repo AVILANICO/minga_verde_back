@@ -20,4 +20,4 @@ import Chapter from '../../models/Chapter.js'
         }
     }
 
-export default Chapter
+export default read
