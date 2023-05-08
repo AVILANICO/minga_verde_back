@@ -8,7 +8,9 @@ let get_one = async (req, res, next) => {
             return res.status(200).json({
                 response: get_one
             })
-        }
+        }   return res.status(404).json({
+                response: 'the chapter was not found'
+            })
     } catch (error) {
         next(error) 
     }
