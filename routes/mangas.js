@@ -1,7 +1,7 @@
 //aca voy a definir los endpoints de los autores 
 //y los voy a exportar para poder utilizarlos 
 import { Router } from "express";
-import read from '../controllers/mangas/read.js'
+import read from '../controllers/mangas/get_mangas.js'
 import create from '../controllers/mangas/create.js';
 import validator from '../middlewares/validator.js';
 import { mangaCreate } from '../schemas/mangas.js';
