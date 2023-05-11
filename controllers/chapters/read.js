@@ -19,7 +19,12 @@ import Chapter from '../../models/Chapter.js'
             next(error)
         }
     }
+<<<<<<< HEAD
 
 export default read
 
 
+=======
+
+export default read
+>>>>>>> 4b690577155caea7aaad75984d9f9420f36697cd
