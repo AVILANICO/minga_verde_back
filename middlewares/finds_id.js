@@ -4,13 +4,13 @@ import Company from "../models/Company.js"
 async function finds_id(req, res, next){
 
   try {
-      const author = await Author.findOne({ user: req.user._id});
+      const author = await Author.findOne({ user_id: req.user._id});
       if (author) {
         req.body.author_id = author._id;
         return next();
       }
       
-      const company = await Company.findOne({ user: req.user._id});
+      const company = await Company.findOne({ user_id: req.user._id});
       if (company) {
         req.body.company_id = company._id;
         return next();
