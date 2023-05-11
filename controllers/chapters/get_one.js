@@ -16,7 +16,6 @@ let get_one = async (req, res, next) => {
                 response: 'the chapter was not found'
             })
 
-
     } catch (error) {
         next(error) 
     }
