@@ -13,7 +13,7 @@ import get_one from "../controllers/chapters/get_one.js";
 let router = Router()
 
 router.post('/',passport.authenticate('jwt',{session:false}),validator(schema) ,create)
-router.get('/:id',get_one)
+router.get('/:id', get_one)
 router.get('/:id',read)
 // router.put('/:id', (req, res, next) => res.status(200).send('autores modificados'))
 // router.delete('/:id', (req, res, next) => res.status(200).send('autores borrados'))
