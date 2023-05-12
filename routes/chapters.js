@@ -16,7 +16,10 @@ let router = Router()
 router.post('/',passport.authenticate('jwt',{session:false}),validator(schema) ,create)
 router.get('/', get_chapters)
 router.get('/:id',passport.authenticate('jwt',{session:false}), get_one)
+<<<<<<< HEAD
+=======
 
+>>>>>>> 5fc218416d6d10f6600c018294f7498d4c544976
 // router.put('/:id', (req, res, next) => res.status(200).send('autores modificados'))
 // router.delete('/:id', (req, res, next) => res.status(200).send('autores borrados'))
 
