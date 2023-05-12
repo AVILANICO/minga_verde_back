@@ -1,10 +1,17 @@
-let name = 'mangas'
+import Manga from "../../models/Manga.js"
 
-let read = (req, res, next) => res.status(200).render(
-  'index', //nombre de la vista
+let read = async(req, res, next) => { // la funcion controladora debe ser asincrona para poder esperar la respuesta de mongo 
+  try                             //utilizo try cath para intentar algo y agarrar los errores q puedan surgir 
   {
-    title: '/' + name,
-    subtitle: 'Endpoint of ' + name
-  })
+  let all = await Manga.find()       //utilizo find para buscaR todos los recursos del modelo que es manga
+  return res.status(200)                   //configuro la respuesta que le tengo que enviar al cliente (front)
+    .json({
+        Manga: all
+      })
+    }
+  catch(error){
+    next(error)
+  }
+}
 
-  export default read;
+export default read
