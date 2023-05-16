@@ -1,0 +1,23 @@
+import Manga from "../../models/Manga.js"; 
+
+
+let get_Me=async(req,res,next)=>{
+    try {
+
+        const mangas = await Manga.find({ author_id: req.body.author_id } )
+        if (mangas) {
+            return res.status(200).json({
+                succes:true,
+                response:mangas
+            })
+        }
+        return res.status(404).json({
+            repsonse:'el manga no esta '
+        })
+
+    } catch (error) {
+        next(error)
+    }
+}
+
+export default get_Me
