@@ -1,30 +1,29 @@
 import Author from "../models/Author.js";
 import Company from "../models/Company.js"
 
-async function is_active(req, res, next) {
-  const userId = req.user.id;
-  
+async function finds_id(req, res, next){
   try {
-    const author = await Author.findOne({ user_id: userId });
-    if (!author) {
-      return res.status(404).json({ message: 'Author not found' });
+      const author = await Author.findOne({ user_id: req.user._id});
+      if (author.active === true) {
+        return next();
+      }
+      
+      const company = await Company.findOne({ user_id: req.user._id});
+      if (company.active === true) {
+        return next();
+      }
+      return res.status(404).json({
+        success: false,
+        message: ['Author or company not found']
+      })  
+    } 
+    
+    catch (error) {
+      return res.status(500).json({
+        success: false,
+        message: [{error: error.message}]
+      })
     }
-    if (!author.active) {
-      return res.status(401).json({ message: 'the Author is inactive' });
-    }
-
-    // const company = await Company.findOne({ user_id: userId });
-    // if (!company) {
-    //   return res.status(404).json({ message: 'Company not found' });
-    // }
-    // if (!company.active) {
-    //   return res.status(401).json({ message: 'Company inactive' });
-    // }
-
-    next();
-  } catch (err) {
-    return res.status(500).json({ message: 'error' });
-  }
 }
-  
-  export default is_active;
+
+export default finds_id;

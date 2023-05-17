@@ -6,7 +6,6 @@ let destroy = async(req,res,next) => {
         if (destroyed.deletedCount){
             return res.status (200).json({
                 success: true,
-                destroyed
             })
         }else {
             return res.status(404).json({
