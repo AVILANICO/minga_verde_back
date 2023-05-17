@@ -24,3 +24,6 @@ router.put('/:id', passport.authenticate('jwt',{session:false}),finds_id, is_act
 router.delete('/:id', passport.authenticate('jwt',{session:false}), finds_id, is_active, is_property_of, destroy)
 
 export default router;
+
+
+
