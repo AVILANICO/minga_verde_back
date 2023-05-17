@@ -20,7 +20,7 @@ router.post('/',passport.authenticate('jwt',{session:false}),validator(schema) ,
 router.get('/me',passport.authenticate('jwt',{session:false}), finds_id, get_me)
 router.get('/:id',passport.authenticate('jwt',{session:false}), get_one)
 router.put('/:id',passport.authenticate('jwt',{session:false}), finds_id, is_active, is_property_of , update)
-router.delete('/:id',passport.authenticate('jwt',{session:false}), finds_id, is_active, is_property_of, destroy )
+router.delete('/:id',passport.authenticate('jwt',{session:false}), finds_id, is_active, is_property_of , destroy )
 router.get('/', get_chapters)
 
 
