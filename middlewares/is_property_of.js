@@ -1,23 +1,18 @@
 import Manga from '../models/Manga.js';
 
-const is_property_of = async (req, res, next) => {
-
-  try {
-  const manga = await Manga.findOne({_id: req.body.manga_id, author_id: req.body.author_id});
-    if (manga) {
-      // Deja pasar la petición
-      next();
-    } else {
-      // Responde con un error
-      res.status(403).json({ 
-        message: 'Este manga no es propiedad del autor.' 
-      });
-  }
-
-  } catch (error) {
-    return res.status(500)
-    .json({ error: error.message });
-  }
+const is_property_of =async (req,res,next)=>{
+  const mangaId = req.params.id
+  const authorId = req.body.author_id
+    try{
+      const manga= await Manga.findOne( {_id:mangaId,author_id:authorId} )
+      if(!manga){
+          return res.status(404).json({message:"Manga not found or not owned by author"})
+      }
+      next()
+    }
+    catch (err){
+    return res.status(500).json({menssage:"Server error"})
+    }
 }
 
-export default is_property_of;
+export default is_property_of

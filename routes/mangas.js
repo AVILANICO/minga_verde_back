@@ -9,6 +9,8 @@ import finds_id from "../middlewares/finds_id.js";
 import get_Me from "../controllers/mangas/get_me.js";
 import update from "../controllers/mangas/update.js";
 import destroy from "../controllers/mangas/destroy.js";
+import is_active from "../middlewares/is_active.js";
+import is_property_of from "../middlewares/is_property_of.js";
 
 let router = Router()
 
@@ -18,7 +20,7 @@ router.get('/:id', get_one)
 // ":" es para darle cualquier nombre al parametro
 router.post('/mangas', create)
 router.post('/',passport.authenticate('jwt',{session:false}),validator(mangaCreate), create)
-router.put('/:id', passport.authenticate('jwt',{session:false}), update)
-router.delete('/:id', passport.authenticate('jwt',{session:false}), destroy)
+router.put('/:id', passport.authenticate('jwt',{session:false}),finds_id, is_active, is_property_of, update)
+router.delete('/:id', passport.authenticate('jwt',{session:false}), finds_id, is_active, is_property_of, destroy)
 
 export default router;
