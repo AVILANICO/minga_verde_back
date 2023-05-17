@@ -17,4 +17,3 @@ const is_property_of =async (req,res,next)=>{
 
 export default is_property_of
 
-
