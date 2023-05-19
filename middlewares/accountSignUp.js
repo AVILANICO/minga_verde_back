@@ -8,6 +8,8 @@ async function accountExistsSignUp(req,res,next) {
             success: false,
             message: '¡User already exist!'
         })
+        // .send('user already exist!')
+        //aca debo responder con un JSON con la misma forma de los errores que estoy armando
     }
     return next()
 }

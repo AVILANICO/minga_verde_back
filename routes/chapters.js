@@ -1,5 +1,3 @@
-//aca voy a definir los endpoints de los autores 
-//y los voy a exportar para poder utilizarlos 
 import { Router } from "express";
 import create from "../controllers/chapters/create.js"
 import validator from "../middlewares/validator.js";
