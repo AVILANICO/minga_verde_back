@@ -2,7 +2,6 @@ import Author from "../models/Author.js";
 import Company from "../models/Company.js"
 
 async function is_active(req, res, next){
-
   try {
       const author = await Author.findOne({ user_id: req.user._id});
       if (author.active === true) {
