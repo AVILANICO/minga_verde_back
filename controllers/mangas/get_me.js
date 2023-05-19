@@ -5,6 +5,7 @@ let get_Me=async(req,res,next)=>{
         const mangas = await Manga.find({ author_id: req.body.author_id })
         .populate('author_id','name -_id')
         .populate('category_id')
+        .populate('company_id')
         if (mangas) {
             return res.status(200).json({
                 succes:true,

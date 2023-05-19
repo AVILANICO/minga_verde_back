@@ -2,7 +2,6 @@ import express from 'express';
 import register from '../controllers/auth/register.js';
 import signin from '../controllers/auth/signin.js';
 import signout from '../controllers/auth/signout.js';
-
 import validator from '../middlewares/validator.js';
 import { userCreateSignUp, userCreateSignIn } from '../schemas/users.js';
 import accountExistsSignUp from '../middlewares/accountSignUp.js';
