@@ -1,26 +1,25 @@
 import Chapter from "../../models/Chapter.js";
 
-const update = async (req,res,next) => {
+const update = async (req, res, next) => {
     try {
-        let update = await Chapter.updateOne(
-            {_id: req.params.id}, // objeto de busqueda de lo que se quiere modificar
-            req.body              // objeto con la modificacion (modifica una, dos o todas las propiedades que envie el cliente)
-        )
-        if (update.modifiedCount ) {
-            return res.status(200).json({
-                success: true,
-                message: 'updated',
-            })
+        let response = await Chapter.findOneAndUpdate(
+            { _id: req.params.id }, 
+            req.body, 
+            {new:true});
+        if (response) {
+        return res.status(200).json({
+            success: true,
+            message: "updated",
+            response
+        });
         } else {
-            return res.status(404).json({
-                success: false,
-                message: 'Not found',
-            })
+        return res.status(404).json({
+            success: false,
+            message: "not found"
+        });
         }
-
     } catch (error) {
         next(error);
     }
-}
-
+};
 export default update;
