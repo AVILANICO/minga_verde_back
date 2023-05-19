@@ -38,7 +38,6 @@ let read = async (req, res, next) => {
             success: true,
             response: all,
             count : Math.round(count / pagination.limit)
-            /* agregra status 400 */
         })
     } catch (error) {
         next(error)

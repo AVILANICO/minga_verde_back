@@ -3,7 +3,7 @@ import Chapter from "../../models/Chapter.js";
 let get_one = async (req, res, next) => {
     try {
         
-        let get_one = await Chapter.findOne({_id:req.params.id},'pages title order -_id' )
+        let get_one = await Chapter.findOne({_id:req.params.id},'pages title order manga_id -_id' )
         let id_next = await Chapter.findOne({order:get_one.order + 1}, '_id')
         let id_prev = await Chapter.findOne({order:get_one.order - 1}, '_id')
         if (get_one){
