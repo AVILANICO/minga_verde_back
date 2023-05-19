@@ -9,12 +9,12 @@ let get_one= async(req,res,next)=>{
       //el populate DECODIFICA la propiedad y me devuelve el objeto con los selectores pedidos.
       .populate('category_id','name -_id')
       .populate('author_id','name -_id')
-    
-    //agregar el condicional por si "all" no existe.
-  return res.status(200).json({ 
-    succes:true,
-    response: one
-  }) 
+    if(one){
+      return res.status(200).json({ 
+        succes:true,
+        response: one
+      })
+    }
   } catch (error) {
     next(error)
   }
