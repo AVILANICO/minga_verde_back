@@ -1,5 +1,3 @@
-//aca voy a definir los endpoints de los autores 
-//y los voy a exportar para poder utilizarlos 
 import { Router } from "express";
 import create from "../controllers/chapters/create.js"
 import validator from "../middlewares/validator.js";
@@ -22,9 +20,5 @@ router.get('/:id',passport.authenticate('jwt',{session:false}), get_one)
 router.put('/:id',passport.authenticate('jwt',{session:false}), finds_id, is_active, is_property_of , update)
 router.delete('/:id',passport.authenticate('jwt',{session:false}), finds_id, is_active, is_property_of , destroy )
 router.get('/', get_chapters)
-
-
-
-
 
 export default router;

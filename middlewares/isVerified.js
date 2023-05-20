@@ -10,3 +10,5 @@ async function accountHasBeenVerified(req, res, next) {
 }
 
 export default accountHasBeenVerified
+
+
