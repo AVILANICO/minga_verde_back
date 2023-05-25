@@ -7,7 +7,7 @@ let schema = new mongoose.Schema({
   role: {type: Number, required: true},
   is_online: {type: Boolean, required: true},
   is_verified:{type: Boolean, required: true},
-  verify_code:{type: String, required: true}
+  verify_code:{type: String, required: false}
 },{
   timestamps: true
 })
