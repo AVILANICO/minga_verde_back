@@ -4,6 +4,10 @@ import User from "../../models/User.js";
 
 
 let create = async(req, res, next) => {
+    console.log(req.file);
+    const {firebaseUrl} = req.file ? req.file : '';
+
+    req.body.photo = firebaseUrl
     req.body.role = 0;
     req.body.is_online = false;
     req.body.is_verified = true;

@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 let schema = new mongoose.Schema({
   email: {type: String, required: true},
   password: {type: String, required: true},
-  photo: {type: String, required: true},
+  photo: {type: String, required: false},
   role: {type: Number, required: true},
   is_online: {type: Boolean, required: true},
   is_verified:{type: Boolean, required: true},
