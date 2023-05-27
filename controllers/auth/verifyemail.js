@@ -10,7 +10,6 @@ const verifyEmail =  async(req,res,next) => {
             const user = await User.findOne({verify_code})
 
             if (user){
-                user.verify_code = null
                 user.is_verified = true
 
                 await user.save()
@@ -22,6 +21,7 @@ const verifyEmail =  async(req,res,next) => {
                 ) 
 
                 return res.redirect('http://localhost:5173/signin')
+
             }else res.status(404).json('Mail verification failed, invalid token')
 
         }catch(error){
