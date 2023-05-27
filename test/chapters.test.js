@@ -26,7 +26,7 @@ describe( 'Test to chapters', () => {
         .send(chapter)
         .auth(token, { type: 'bearer'})
 
-        assert.equal(response.status, 2033)
+        assert.equal(response.status, 201)
     })
 
     it( 'REQ-TEST: GET /chapters verify that token through by header', async () => {
