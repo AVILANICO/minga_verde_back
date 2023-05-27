@@ -19,7 +19,7 @@ let create = async(req, res, next) => {
         return res.status(201).json({
           message: 'user created successfully!!',
           user: one.email,
-          success: true,
+          success: "Ok",
           timestamps: one.createdAt  
         })
       } catch (error) {

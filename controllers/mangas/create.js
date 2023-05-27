@@ -11,7 +11,7 @@ let create = async(req, res, next) => {
     let one = await new Manga(req.body)
     await one.save()
     return res.status(201).json({
-        success: true,
+        success: 'ok',
         id: one._id,
         timestamps: one.createdAt
     })
