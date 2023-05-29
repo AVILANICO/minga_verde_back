@@ -2,7 +2,6 @@ import multer from "multer";
 
 function upload_cover_photo() {
   const storage = multer.memoryStorage({
-    destination: './public/files',
     filename: function (req, file, cb) {
       let extension = file.originalname.slice(file.originalname.lastIndexOf('.'));
       let filename = Date.now() + extension;

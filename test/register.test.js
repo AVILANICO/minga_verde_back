@@ -12,7 +12,7 @@ describe('Test on /register path', () => {
   })
 
   describe('POST /register', () => {
-    const email = "wowaura10050@gmail.com";
+    const email = "wowaura200@gmail.com";
     const password = "qwertyuiop12";
 
     it('Should create a new user, On success should return status 201, an object with message: "user created successfully!!", an object with success:"Ok", an object with user: email', async () =>{
@@ -21,6 +21,10 @@ describe('Test on /register path', () => {
       console.log(response.statusCode);
 
       expect(response.statusCode).to.equal(201);
+      expect(response.body).to.have.property('success')
+      expect(response.body.success).to.equal('Ok')
+      expect(response.body).to.have.property('user')
+      expect(response.body.user).to.equal(email)
     })
   })
 

@@ -1,6 +1,7 @@
 import { expect } from "chai";
 import request from "supertest";
 import app from "../app.js"
+import Manga from "../models/Manga.js";
 
 describe('Test on /mangas path', () => {
   let api = null
@@ -10,9 +11,10 @@ describe('Test on /mangas path', () => {
   })
 
   describe('POST /mangas', () => {
-    const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0NmZmOTBiZTU0YmVkN2ExZGQxMDEwZCIsImlhdCI6MTY4NTIxODMwOSwiZXhwIjoxNjg1ODIzMTA5fQ.9-vUhWWCwHE_Q7WWoBhZIpsl5mZy_W7y5xrAB3vyxsY"
+    const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0NmZmOTBiZTU0YmVkN2ExZGQxMDEwZCIsImlhdCI6MTY4NTMzMjYwNSwiZXhwIjoxNjg1OTM3NDA1fQ.Z7ysRIfifGdudUbAnxNcW6B5Akm1zmPWFPjP1trUWOc"
+
     const manga = {
-      title: 'Las aventuras de Luisillo el gordillo 5',
+      title: 'Las aventuras de Luisillo el gordillo 15',
       cover_photo: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTzVqmbSxhauTNwRSps740Zlka4AEGKvZU4YQ&usqp=CAU',
       category_id: '646fdaacdd6c48bf00c7f47a',
       description: 'a luisillo el gordillo le gusta comer chorizos'
@@ -22,10 +24,17 @@ describe('Test on /mangas path', () => {
       const response = await api.post('/mangas')
       .set('Authorization', `Bearer ${token}`)
       .send(manga)
+
+      const _id = response.body.id
       console.log(response.body);
       console.log(response.statusCode);
 
       expect(response.statusCode).to.equal(201);
+      expect(response.body).to.have.property('success')
+      expect(response.body.success).to.equal('ok')
+      expect(response.body).to.have.property('id')
+      expect(response.body.id).to.equal(_id)
+
     })
   })
 })
