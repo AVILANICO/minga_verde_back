@@ -5,7 +5,11 @@ const update = async (req, res, next) => {
         let response = await Chapter.findOneAndUpdate(
             { _id: req.params.id }, 
             req.body, 
+<<<<<<< HEAD
+            {new:true});            // este campo es opcional y retorna despues de modificarse
+=======
             {new:true});
+>>>>>>> a76dcab429e7e3049128c248c8509948997b6e71
         if (response) {
         return res.status(200).json({
             success: true,

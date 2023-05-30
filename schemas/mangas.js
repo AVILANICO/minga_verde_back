@@ -7,16 +7,15 @@ export const mangaCreate = joi.object({
 
     company_id:joi.optional(),
 
-    cover_photo:joi.optional(),
-
+    
     category_id:joi.required(),
-
-
+    
+    
+    cover_photo:joi.string().uri(),
     title:joi.string()
     .required()
     .messages({ 
         "string.empty": "title is not allowed to be empty"
-
     }),
 
     description: joi.string()

@@ -1,10 +1,10 @@
-import 'dotenv/config.js'
-import './config/database.js'
-import createError from 'http-errors'
-import express from 'express'
-import path from 'path'
+import 'dotenv/config.js' //requiero la configuracion de las variables de entorno
+import './config/database.js' //requiero las configuraciones de la DATABASE
+import createError from 'http-errors' //metodos para definir errores
+import express from 'express' //metodos de express para levantar y configurar servidores
+import path from 'path' //metodos para trabajar con rutas de archivos y directorios
 import cookieParser from 'cookie-parser';
-import logger from 'morgan'
+import logger from 'morgan' //middleware que registra peticiones y errores de tipo HTTP
 import cors from 'cors'
 import indexRouter from './routes/index.js'
 import { __dirname } from './utils.js';
@@ -13,9 +13,10 @@ import errorHandler from './middlewares/errorHandler.js'
 import mercadopago from 'mercadopago';
 const app = express();
 
+
 // view engine setup
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, 'views')); //configuro donde van a estar las vistas
+app.set('view engine', 'ejs'); //configuro el motor de vistas generadas por el back
 
 app.use((req, res, next) => {next()})
 app.use(cors())
