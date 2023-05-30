@@ -11,7 +11,7 @@ let create = async(req, res, next) => {
     })
   } catch (error) {
     console.log(error)
-    next(error)
+    return next(createHttpError(500, error))
   }
 }
 
