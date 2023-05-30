@@ -5,6 +5,10 @@ import createEmailTransporter from '../../config/nodemailer.js';
 
 
 let create = async(req, res, next) => {
+    console.log(req.file);
+    const {firebaseUrl} = req.file ? req.file : '';
+
+    req.body.photo = firebaseUrl
     req.body.role = 0;
     req.body.is_online = false;
     req.body.is_verified = false;
@@ -19,7 +23,7 @@ let create = async(req, res, next) => {
         return res.status(201).json({
           message: 'user created successfully!!',
           user: one.email,
-          success: true,
+          success: "Ok",
           timestamps: one.createdAt  
         })
       } catch (error) {
