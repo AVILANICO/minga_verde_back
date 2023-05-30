@@ -12,6 +12,8 @@ import passport from '../middlewares/passport.js';
 import updateAuthor from "../controllers/authors/update.js"
 import is_admin from '../middlewares/is_admin.js';
 import updateCompany from '../controllers/companies/update.js';
+import uploadFile from '../middlewares/upload_file.js'
+import uploadImage from '../services/firebase.cjs';
 
 const router = express.Router();
 
@@ -20,11 +22,13 @@ router.get('/', function(req, res, next) {
   res.send('respond with a resource');
 });
 
-router.post('/register', validator(userCreateSignUp), accountExistsSignUp, register)
+router.post('/register', uploadFile(), uploadImage, validator(userCreateSignUp), accountExistsSignUp, register)
 router.post('/signin', validator(userCreateSignIn), accountExistsSignIn, accountHasBeenVerified, passwordIsOk, signin)
 router.post('/signout', passport.authenticate('jwt', {session: false}), signout)
 router.put('/role/author/:id',passport.authenticate('jwt', {session: false}),is_admin,updateAuthor)
 router.put('/role/company/:id',passport.authenticate('jwt',{session:false}),is_admin,updateCompany)
 
 export default router;
+
+
 
