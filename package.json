@@ -6,7 +6,8 @@
   "scripts": {
     "start": "node ./bin/www.js",
     "dev": "nodemon .bin/www.js",
-    "data": "node ./models/data/data.js"
+    "data": "node ./models/data/data.js",
+    "test": "mocha"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
@@ -20,12 +21,17 @@
     "joi": "^17.9.2",
     "joi-oid": "^1.1.2",
     "jsonwebtoken": "^9.0.0",
+    "mercadopago": "^1.5.16",
     "mongoose": "^7.0.4",
     "morgan": "~1.9.1",
     "passport": "^0.6.0",
-    "passport-jwt": "^4.0.1"
+    "passport-jwt": "^4.0.1",
+    "socket.io": "^4.6.1"
   },
   "devDependencies": {
-    "nodemon": "^2.0.22"
+    "chai": "^4.3.7",
+    "mocha": "^10.2.0",
+    "nodemon": "^2.0.22",
+    "supertest": "^6.3.3"
   }
 }
