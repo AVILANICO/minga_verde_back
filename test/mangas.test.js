@@ -1,7 +1,6 @@
 import { expect } from "chai";
 import request from "supertest";
 import app from "../app.js"
-import Manga from "../models/Manga.js";
 
 describe('Test on /mangas path', () => {
   let api = null
@@ -11,10 +10,10 @@ describe('Test on /mangas path', () => {
   })
 
   describe('POST /mangas', () => {
-    const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0NmZmOTBiZTU0YmVkN2ExZGQxMDEwZCIsImlhdCI6MTY4NTMzMjYwNSwiZXhwIjoxNjg1OTM3NDA1fQ.Z7ysRIfifGdudUbAnxNcW6B5Akm1zmPWFPjP1trUWOc"
+    const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0NmZmOTBiZTU0YmVkN2ExZGQxMDEwZCIsImlhdCI6MTY4NTM2NjQ0MiwiZXhwIjoxNjg1OTcxMjQyfQ.Udi1z4_y4gMhJjLd0SCDSsaAgP6fzpQ-Pbg_NTIK5YQ"
 
     const manga = {
-      title: 'Las aventuras de Luisillo el gordillo 15',
+      title: 'Las aventuras de Luisillo el gordillo 16',
       cover_photo: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTzVqmbSxhauTNwRSps740Zlka4AEGKvZU4YQ&usqp=CAU',
       category_id: '646fdaacdd6c48bf00c7f47a',
       description: 'a luisillo el gordillo le gusta comer chorizos'
