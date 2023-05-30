@@ -6,7 +6,7 @@ export const userCreateSignUp = joi.object({
     .required(),
     password: joi.string()
     .min(8)
-    .max(20)
+    .max(30)
     .required(),
     photo: joi.string().uri(),
 })
@@ -16,7 +16,7 @@ export const userCreateSignIn = joi.object({
     .required(),
     password: joi.string()
     .min(8)
-    .max(20)
+    .max(30)
     .required(),
     photo: joi.string().uri(),
 })

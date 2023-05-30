@@ -13,12 +13,16 @@ import updateAuthor from "../controllers/authors/update.js"
 import is_admin from '../middlewares/is_admin.js';
 import updateCompany from '../controllers/companies/update.js';
 
+import verifyEmail from '../controllers/auth/verifyemail.js';
+
 const router = express.Router();
 
 /* GET users listing. */
 router.get('/', function(req, res, next) { 
   res.send('respond with a resource');
 });
+
+router.get('/verify',verifyEmail)
 
 router.post('/register', validator(userCreateSignUp), accountExistsSignUp, register)
 router.post('/signin', validator(userCreateSignIn), accountExistsSignIn, accountHasBeenVerified, passwordIsOk, signin)
