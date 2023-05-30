@@ -30,3 +30,5 @@ router.put('/role/company/:id',passport.authenticate('jwt',{session:false}),is_a
 
 export default router;
 
+
+
