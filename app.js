@@ -10,6 +10,7 @@ import indexRouter from './routes/index.js'
 import { __dirname } from './utils.js';
 import notFound from './middlewares/notFound.js'
 import errorHandler from './middlewares/errorHandler.js'
+import mercadopago from 'mercadopago';
 const app = express();
 
 
@@ -18,7 +19,6 @@ app.set('views', path.join(__dirname, 'views')); //configuro donde van a estar l
 app.set('view engine', 'ejs'); //configuro el motor de vistas generadas por el back
 
 app.use((req, res, next) => {next()})
-
 app.use(cors())
 app.use(logger('dev'));
 app.use(express.json());
