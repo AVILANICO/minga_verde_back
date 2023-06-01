@@ -27,5 +27,3 @@ async function finds_id(req, res, next){
 }
 
 export default finds_id;
-
-

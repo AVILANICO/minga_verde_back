@@ -15,6 +15,7 @@ let get_one= async(req,res,next)=>{
         response: one
       })
     }
+
   } catch (error) {
     next(error)
   }
