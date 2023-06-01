@@ -14,6 +14,7 @@ import is_admin from '../middlewares/is_admin.js';
 import updateCompany from '../controllers/companies/update.js';
 import uploadFile from '../middlewares/upload_file.js'
 import uploadImage from '../services/firebase.cjs';
+import verifyEmail from '../controllers/auth/verifyemail.js';
 
 const router = express.Router();
 
@@ -21,7 +22,7 @@ const router = express.Router();
 router.get('/', function(req, res, next) { 
   res.send('respond with a resource');
 });
-
+router.get('/verify',verifyEmail)
 router.post('/register', uploadFile(), uploadImage, validator(userCreateSignUp), accountExistsSignUp, register)
 router.post('/signin', validator(userCreateSignIn), accountExistsSignIn, accountHasBeenVerified, passwordIsOk, signin)
 router.post('/signout', passport.authenticate('jwt', {session: false}), signout)

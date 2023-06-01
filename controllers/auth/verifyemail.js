@@ -1,5 +1,4 @@
 import User from "../../models/User.js";
-import jwt from "jsonwebtoken";
 
 const verifyEmail =  async(req,res,next) => {
     
@@ -13,12 +12,6 @@ const verifyEmail =  async(req,res,next) => {
                 user.is_verified = true
 
                 await user.save()
-
-                const token = jwt.sign(
-                    {id: user._id}, //datos a encriptar
-                    process.env.SECRET, //llave para poder encriptar y luego desencriptar
-                    { expiresIn: 60*60*24*7 } //tiempo de expiracion en segundos
-                ) 
 
                 return res.redirect('http://localhost:5173/signin')
 
