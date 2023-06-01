@@ -1,10 +1,7 @@
-<<<<<<< HEAD
 //la funcion controladora debe ser asincrona para poder esperar la respuesta de mongo
 //utilizo la sintaxis de try/catch para intentar algo y catchear los errores
 //utilizo el metodo find para buscar los recursos del modelo
 //configuro la respuesta que le tengo que enviar al cliente (front) 
-=======
->>>>>>> 96b2055865d7bf034613ea708981944426487e06
 import Chapter from "../../models/Chapter.js";
 
 let get_one = async (req, res, next) => {
